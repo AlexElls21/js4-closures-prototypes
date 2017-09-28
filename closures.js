@@ -216,13 +216,19 @@ inner();
 
   /****** INSTRUCTIONS PROBLEM 7 ******/
   /* Here we have a function named secretNumber that has a secret number. Inside
-  the return object, create two methods called addToSecret and takeAwayFromSecret. addToSecret should have a parameter that is added to the secret number returning the updated secret number. takeAwayFromSecret should have a parameter that takes away from the secret number returning the updated secret number. */
+  the return object, create two methods called addToSecret and takeAwayFromSecret.
+   addToSecret should have a parameter that is added to the secret number returning the updated secret number.
+    takeAwayFromSecret should have a parameter that takes away from the secret number returning the updated secret number. */
 
   function secretNumber() {
     var secret = 143;
 
     return {
-      // Code here
+        addToSecret: function(num){
+        return secret += num},
+        takeAwayFromSecret: function(num){
+          return secret -= num
+        } 
     }
   }
   
@@ -248,12 +254,19 @@ inner();
    Fix the code below to log the desired output.
    */
   
+
+
   function timeOutCounter() {
-    for (var i = 0; i <= 5; i++) {
-      setTimeout(function() {
-          console.log(i)
-      }, i * 1000)
-    }
-  }
-  timeOutCounter();
+    
+        var closure = function(i){
+          return function(){
+            console.log(i)
+          }
+        }
+    
+        for (var i = 0; i <= 5; i++) {
+          setTimeout(closure(i), i * 1000)
+        }
+      }
+      timeOutCounter();
   
